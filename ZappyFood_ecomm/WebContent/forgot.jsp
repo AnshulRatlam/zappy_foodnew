@@ -16,7 +16,7 @@
                         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
                             <div class="login_page_form">
                             <label>Change Password</label>
-                                <form action="updatePass" method="post">
+                                <form action="updatepasswithotp" method="post">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="input_text">

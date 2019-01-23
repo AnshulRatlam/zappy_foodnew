@@ -23,8 +23,24 @@
       
      }
 	   %>
+<% 
+String m = (String)request.getAttribute("msg") ;
+if (m!=null)
+{
+	%>
+	 <div > 
+	<div class="alert  alert-success col-xs-4" style=" margin-left: 30%;margin-right: 30%;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong><%= m %></strong> 
+  </div>
+  </div>
+	<% 
+	
+}
 
-       ${msg}
+ 
+%>
+      
 
 	  <div class="container">
 	  <table class="table table-striped">

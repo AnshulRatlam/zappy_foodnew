@@ -75,10 +75,11 @@
               <% if (m!=null)
 {
 	%> 
-                
+       <div style=" margin-left: 30%;margin-right: 30%;margin-top: 2%;">         
 	<div class="alert alert-success alert-dismissible">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong><%= m %></strong> 
+  </div>
   </div>
 	<%} %>
                 

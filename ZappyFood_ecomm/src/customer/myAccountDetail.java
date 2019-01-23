@@ -49,6 +49,7 @@ public class myAccountDetail extends HttpServlet {
 
 	      RequestDispatcher rd=request.getRequestDispatcher("myAccount.jsp");
 	      request.setAttribute("LIST", list);
+	      
 	      rd.forward(request, response);
 	}
 

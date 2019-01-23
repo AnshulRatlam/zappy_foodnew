@@ -134,12 +134,14 @@ ON view_cart.pid=itemcollection.Sno WHERE view_cart.user= 'the';
                                             <%} %>
                                              </form> 
                                                 <form action="checkServlet" method="post">
-                                            
+                                            <%if (uid!=null) 
+                                            {
+                                            %>
                                             <div class="order-total">
                                                 <span><strong>Adress</strong> </span> <br/>         
                                               <textarea name="Adress" rows="" cols=""></textarea>
                                             </div>
-                                            
+                                            <%} %>
                                             <div class="buttons-carts">
                                           <%--   <a>  <input type="submit" value="" />proceed to Checkout</a>--%> 
                                            <input type="submit"  value="proceed to Checkout">

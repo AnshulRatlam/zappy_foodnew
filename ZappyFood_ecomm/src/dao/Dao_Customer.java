@@ -167,9 +167,9 @@ public class Dao_Customer {
 		{
 			int x=0;
 			
-			try {
+			try (Connection con = Start();){
 				
-				Connection con = Start();
+				
 				PreparedStatement ps=con.prepareStatement("select * from cust_signup where fname=? and pass=?");
 				ps.setString(1, uid);
 				ps.setString(2, pwd);
@@ -177,7 +177,7 @@ public class Dao_Customer {
 		          x=0;
 				 if(rs.next())
 					 x=1;
-				con.close();
+				
 			}catch( SQLException w)
 				{
 				   System.out.println(w);
@@ -697,6 +697,190 @@ public class Dao_Customer {
 				}
 		return userpsw;
 	 }
+	 public int checkEmailbyfilter(String email)
+	 {
+	 	
+	 	int x=0;
+	 	try
+	 	{	
+	 		
+	 		Class.forName("com.mysql.jdbc.Driver");
+	 		Connection con = Start();
+			
+			PreparedStatement ps=con.prepareStatement("SELECT  * FROM cust_signup WHERE email = ?");
+			ps.setString(1, email);
+			
+	 		ResultSet rs = ps.executeQuery();
+	 		while(rs.next())
+	 		{
+	 			x=1;
+	 		}
+	 		
+	 	}
+	 	
+	 	
+	 	catch(Exception e)
+	 	{
+	 		System.out.println(e);
+	 	}
+	 	
+	      return x;
+	 }
+	 
+	 /*public int Insertotp(String s,String user)
+	 {
+		 int y=0;
+		 try
+		 	{	
+		 		
+		 		Class.forName("com.mysql.jdbc.Driver");
+		 		Connection con = Start();
+				
+				PreparedStatement ps=con.prepareStatement("insert into otpgenrate(email,otpvalue) value(?,?)");
+				 
+	    		    ps.setString(1, user);
+	    		    ps.setString(2, s);
+	    		    y=ps.executeUpdate();
+	    		    
+	    		    
+	    		    con.close();
+	    	 }catch(Exception e)
+	    	 {
+	    		  System.out.println(e);
+	    	 }
+	    		return y;
+	    	}*/
+	 
+	////select otp in customer table for email
+	 public String userotp(String user)
+	 {
+		 String userotp=null;
+		 try {
+				Connection con = Start();
+				
+				PreparedStatement ps=con.prepareStatement("select  otpvalue from cust_signup where email=?");
+				ps.setString(1, user);
+				ResultSet rs=ps.executeQuery();
+				if(rs.next())
+				{ 
+					
+					
+					userotp= rs.getString("otpvalue");
+					
+			     }
+				con.close();
+			}catch( SQLException w)
+				{
+				  System.out.println(w);
+				}
+		return userotp;
+	 }
+
+	/* public int checkuserotp(String otp)
+		 {
+		 	
+		 	int x=0;
+		 	try
+		 	{	
+		 		
+		 		Class.forName("com.mysql.jdbc.Driver");
+		 		Connection con = Start();
+				
+				PreparedStatement ps=con.prepareStatement("SELECT  otpvalue FROM otpgenrate WHERE otpvalue = ?");
+				ps.setString(1, otp);
+				
+		 		ResultSet rs = ps.executeQuery();
+		 		while(rs.next())
+		 		{
+		 			x=1;
+		 		}
+		 		
+		 	}
+		 	
+		 	
+		 	catch(Exception e)
+		 	{
+		 		System.out.println(e);
+		 	}
+		 	
+		      return x;
+		 }
+	 */
+	 ////update otp in customer table
+	 public int Insertotp(String s,String user)
+	 {
+		 int y=0;
+		 try
+		 	{	
+		 		
+		 		Class.forName("com.mysql.jdbc.Driver");
+		 		Connection con = Start();
+				
+				PreparedStatement ps=con.prepareStatement("update cust_signup set otpvalue=? where email=?");
+				 
+	    		    ps.setString(1, s);
+	    		    ps.setString(2, user);
+	    		    y=ps.executeUpdate();
+	    		    
+	    		    
+	    		    con.close();
+	    	 }catch(Exception e)
+	    	 {
+	    		  System.out.println(e);
+	    	 }
+	    		return y;
+	    	}
+	 public String checkuserotp(String otp)
+	 {
+		 String userpsw=null;
+		 try {
+				Connection con = Start();
+				
+				PreparedStatement ps=con.prepareStatement("SELECT  email FROM cust_signup WHERE otpvalue = ?");
+				ps.setString(1,otp);
+				ResultSet rs=ps.executeQuery();
+				if(rs.next())
+				{ 
+					
+					
+					userpsw= rs.getString("email");
+					
+			     }
+				con.close();
+			}catch( SQLException w)
+				{
+				  System.out.println(w);
+				}
+		return userpsw;
+	 }
+	 public int updatepassword(String email,String pasw)
+     {
+    	 int y=0;
+    	 try {
+    		    Class.forName("com.mysql.jdbc.Driver");
+    			Connection	 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/foodecom","root","root");
+
+    		
+    			
+    		  PreparedStatement ps=con.prepareStatement("update cust_signup set pass=? where email=? ");//placeholder
+    		 
+    		  ps.setString(1,pasw);
+    		  ps.setString(2, email);
+  
+    		  
+    		    
+    		    y=ps.executeUpdate();
+    		    
+    		    
+    		    con.close();
+    	 }catch(Exception e)
+    	 {
+    		  System.out.println(e);
+    	 }
+    		return y;
+    	}
+  
+	 
 	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

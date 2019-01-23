@@ -47,11 +47,8 @@ public class updatePass extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String user = request.getParameter("user");
+	 * 
+	 * /*	String user = request.getParameter("user");
 		my_dao d = new my_dao();
 		Dao_Customer c = new Dao_Customer();
 				 ArrayList<Order_Bean> list= d.vieworder();
@@ -64,55 +61,11 @@ public class updatePass extends HttpServlet {
 			      request.setAttribute("msg", "your password send Successfully...");
 			      request.setAttribute("LIST", list);
 			      rd.forward(request, response);
-			}
-	public void sendMail(String to,String sub,String msg)
-	{
-
-		String from = "project.chayan@gmail.com";
-	    final String usename =  "project.chayan@gmail.com";//change accordingly
-	    final String pasd = "Chayan1234";//change accordingly
-
-	    // Assuming you are sending email through relay.jangosmtp.net
-	    String host = "smtp.gmail.com";
-
-	    Properties props = new Properties();
-	    props.put("mail.smtp.auth", "true");
-	    props.put("mail.smtp.starttls.enable", "true");
-	    props.put("mail.smtp.host", host);
-	    props.put("mail.smtp.port", "587");
-
-	    // Get the Session object.
-	    Session session = Session.getInstance(props,
-	    new javax.mail.Authenticator() {
-	       protected PasswordAuthentication getPasswordAuthentication() {
-	          return new PasswordAuthentication(usename, pasd);
-	       }
-	    });
-
-	    try {
-	       // Create a default MimeMessage object.
-	       Message message = new MimeMessage(session);
-
-	       // Set From: header field of the header.
-	       message.setFrom(new InternetAddress(from));
-
-	       // Set To: header field of the header.
-	       message.setRecipients(Message.RecipientType.TO,
-	       InternetAddress.parse(to));
-
-	       // Set Subject: header field
-	       message.setSubject(sub);
-
-	       // Now set the actual message
-	      // message.setText(msg);
-
-	       // Send message
-	       message.setContent(msg,"text/html");
-	       
-	       Transport.send(message);
-	       } catch (MessagingException e) {
-	  	  e.printStackTrace();
-	  	     }	
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	
+		
 	}
-
 }

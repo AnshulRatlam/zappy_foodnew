@@ -23,7 +23,7 @@ response.addHeader("expire", "0");
       
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="create_account.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      
       <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>

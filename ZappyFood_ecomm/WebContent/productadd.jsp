@@ -18,9 +18,11 @@ String m = (String)request.getAttribute("msg") ;
 if (m!=null)
 {
 	%>
-	<div class="alert  alert-success col-xs-4">
+	 <div > 
+	<div class="alert  alert-success col-xs-4" style=" margin-left: 30%;margin-right: 30%;">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong><%= m %></strong> 
+  </div>
   </div>
 	<% 
 	
@@ -64,7 +66,7 @@ if (m!=null)
 							<div class="cols-sm-5">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="pname"  id="name"  placeholder="Enter your Name"/>
+									<input type="text" class="form-control" name="pname"  id="name"  placeholder="Enter your Name" required />
 								</div>
 								 <span id="msg"></span>
 							</div>
@@ -75,7 +77,7 @@ if (m!=null)
 							<div class="cols-sm-5">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="price" id="email"  placeholder="Enter price"/>
+									<input type="text" class="form-control" name="price" id="email"  placeholder="Enter price" required/>
 								   
 								</div>
 							</div>
@@ -85,7 +87,7 @@ if (m!=null)
 							<div class="cols-sm-5">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<textarea class="form-control" name="des" ></textarea>
+									<textarea class="form-control" name="des" required></textarea>
 									</div>
 							</div>
 						</div>

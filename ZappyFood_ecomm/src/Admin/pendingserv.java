@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import Bean.Order_Bean;
 import dao.my_dao;
 
-/**
+/** 
+ * 
+ * 
  * Servlet implementation class pendingserv
  */
 @WebServlet("/pendingserv")

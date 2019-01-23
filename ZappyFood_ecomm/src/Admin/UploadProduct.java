@@ -167,6 +167,13 @@ String category=null;
 	    	//out.println("uploaded successfully...");
        
 	    }
+ 	    else
+ 	    {
+ 	    	RequestDispatcher rd=request.getRequestDispatcher("productadd.jsp");
+ 			request.setAttribute("msg","product Not Add plese fill proper.. ");
+ 			rd.forward(request,response);
+ 	    	
+ 	    }
 
 
 }catch(Exception ex)

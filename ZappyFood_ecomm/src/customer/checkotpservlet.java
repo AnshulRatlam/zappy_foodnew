@@ -1,7 +1,7 @@
 package customer;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,21 +9,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import Bean.cart_bean;
+
 import dao.Dao_Customer;
 
 /**
- * Servlet implementation class checkServlet
+ * Servlet implementation class checkotpservlet
  */
-@WebServlet("/checkServlet")
-public class checkServlet extends HttpServlet {
+@WebServlet("/checkotpservlet")
+public class checkotpservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public checkServlet() {
+    public checkotpservlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +32,7 @@ public class checkServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -41,29 +40,26 @@ public class checkServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-		String Adress = request.getParameter("Adress");
-		HttpSession session = request.getSession();
-		String user = (String)session.getAttribute("uid");
-		Dao_Customer D = new Dao_Customer();
-		 
-	 	  
-		if (user==null)
+		String otp=request.getParameter("otp");
+		String pass=request.getParameter("new_pass");
+		PrintWriter out = response.getWriter();
+		Dao_Customer m = new Dao_Customer(); 
+		String print = m.checkuserotp(otp);
+		
+		if(print!=null)
 		{
-			//RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
-			response.sendRedirect("login.jsp");
-			//rd.forward(request, response);
+			m.updatepassword(print,pass);
+			
+			RequestDispatcher rd=request.getRequestDispatcher("enterotp.jsp");
+		      request.setAttribute("msg", "your password Change");
+		      
+		      rd.forward(request, response);
 		}
 		else
 		{
+			out.println("you enter wrong otp");
+		}
 		
-		 ArrayList<cart_bean> list= D.Checkout(user,Adress);
-		  
-			  RequestDispatcher rd=request.getRequestDispatcher("myAccountDetail");
-	 	 //  request.setAttribute("LIST", list);
-				
-	 	  rd.forward(request, response);
 	}
 
-}
 }

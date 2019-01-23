@@ -29,9 +29,19 @@
 	   
 	   <%@include file="Custheaduser.jsp" %>
         <%} %>
+        
+        <%String mAccount = (String)request.getAttribute("msg") ; %>
+<div style=" margin-left: 30%;margin-right: 30%;margin-top: 2%;">         
+	<div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>your order is placed sucessfully</strong> 
+  </div>
+  </div>
 <section class="main-content-area my-account ptb-100">
 				<div class="container">
 	                <div class="account-dashboard">
+	                
+	                
 	                    <div class="row">
 	                        <div class="col-sm-12 col-md-3 col-lg-3">
 	                            <!-- Nav tabs -->
